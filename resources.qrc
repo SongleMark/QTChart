@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>resources/name.jpeg</file>
+        <file>resources/password.jpg</file>
+        <file>resources/oicq.jpg</file>
+    </qresource>
+</RCC>
