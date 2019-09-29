@@ -2,48 +2,9 @@
 #include "ui_loginservice.h"
 #include "logger/logger.h"
 #include <QTimer>
-#include <QMetaType>
+#include <QMessageBox>
 
 #define TAG "LoginService"
-
-MessageThread::MessageThread(Client *client, bool IsStop, int run):
-    mClietn(client),
-    mIsStop(IsStop),
-    mIsRun(run)
-{
-
-}
-
-MessageThread::~MessageThread()
-{
-
-}
-
-void MessageThread::RecvMessage(int run)
-{
-    mMutex.lock();
-    mIsRun = run;
-    mWaitCondition.wakeAll();
-    mMutex.unlock();
-}
-
-void MessageThread::run()
-{
-    while(!mIsStop)
-    {
-        if(0 == mIsRun)
-        {
-            mMutex.lock();
-            mWaitCondition.wait(&mMutex);
-        }
-        mIsRun --;
-        mMutex.unlock();
-        if(mClietn->ReadFromServer(&mMessage))
-        {
-            emit RecvMessage(mMessage);
-        }
-    }
-}
 
 LoginService::LoginService(QWidget *parent) :
     QWidget(parent),
@@ -55,24 +16,27 @@ LoginService::LoginService(QWidget *parent) :
 LoginService::~LoginService()
 {
     delete ui;
+    delete mMessageService;
+}
+
+void LoginService::closeEvent(QCloseEvent *event)
+{
+
 }
 
 //init main menu
 void LoginService::Init()
 {
     ui->setupUi(this);
-    qRegisterMetaType<QTextCursor>("QTextCursor");
+    move(400, 150);
     InitTime();
-    //mThread = new MessageThread(mClient);
-    //mThread->start();
-    //mThread->wait(1);
-
-    ui->textEditSend->setPlaceholderText(tr("请输入要发送的信息，点击左边用户列表的用户名即可给指定的用户发信息"));
+    mIsClickedUserName = false;
+    mMessageService = new MessageService();
+    //ui->textEditSend->setPlaceholderText(tr("请输入要发送的信息，点击左边用户列表的用户名即可给指定的用户发信息"));
     connect(ui->pushButtonGetClient, SIGNAL(clicked(bool)), this, SLOT(ClickedGetOnlineUserSlot()));
     connect(ui->tableWidget, SIGNAL(cellClicked(int,int)), this, SLOT(ClickedOnlineListSlot(int,int)));
-    //connect(mThread, SIGNAL(RecvMessage(Message)), this, SLOT(RecvMessage(Message)), Qt::DirectConnection);
-    connect(ui->pushButtonRecv, SIGNAL(clicked(bool)), this, SLOT(ClickedRecvButtonSlot()));
-    connect(ui->pushButtonSend, SIGNAL(clicked(bool)), this, SLOT(ClickedSendButtonSlot()));
+    //connect(ui->pushButtonRecv, SIGNAL(clicked(bool)), this, SLOT(ClickedRecvButtonSlot()));
+    //connect(ui->pushButtonSend, SIGNAL(clicked(bool)), this, SLOT(ClickedSendButtonSlot()));
 }
 
 //init time
@@ -80,7 +44,7 @@ void LoginService::InitTime()
 {
     ui->textEditCurrent->setReadOnly(true);
     ui->textEditStartTime->setReadOnly(true);
-    QString time = QDateTime::currentDateTime().toString("yyyy年MM月dd日| hh时 mm分 ss秒");
+    QString time = QDateTime::currentDateTime().toString("yyyy年MM月dd日|hh:mm:ss");
     ui->textEditStartTime->setText(time);
     QThread *thread = new QThread(this);
     QTimer *timer = new QTimer();
@@ -168,16 +132,17 @@ void LoginService::SetOnlineUserTable(OnlineUser *head)
 //update current time
 void LoginService::UpdateTime()
 {
-    QString time = QDateTime::currentDateTime().toString("yyyy年MM月dd日| hh时 mm分 ss秒");
+    QString time = QDateTime::currentDateTime().toString("yyyy年MM月dd日|hh:mm:ss");
     ui->textEditCurrent->setText(time);
 }
 
 //clicked get online button
 void LoginService::ClickedGetOnlineUserSlot()
-{
+{   
+    OnlineUser *head = NULL;
     if(mClient->WriteToServer())
     {
-        OnlineUser *head = mClient->ReadOnlineUser();
+        head = mClient->ReadOnlineUser();
         SetOnlineUserTable(head);
     }
 }
@@ -197,17 +162,29 @@ void LoginService::ClickedOnlineListSlot(int row, int column)
         name = ui->tableWidget->item(row, column - 1)->text();
         id = ui->tableWidget->item(row, column)->text();
     }
+    mIsClickedUserName = true;
     QString str = QString("当前消息发送对象：%1").arg(name);
     LOG(TAG, "str = ", str);
     ui->labelSendName->setText(str);
     mMessage.receiverid = id.toInt(); //receiver's id
     strcpy(mMessage.receivername, name.toStdString().c_str());//receiver's name
     strcpy(mMessage.sendername, mUserinfo.user);//sender's name
+
+    mMessageService->GetTitleFromLogin(QString("消息将发送给:%1").arg(name));
+    mMessageService->GetMessageFromLogin(mMessage);
+    mMessageService->GetClientFromLogin(mClient);
+    mMessageService->show();
 }
 
+#if 0
 //clicked send messages
 void LoginService::ClickedSendButtonSlot()
 {
+    if(!mIsClickedUserName)
+    {
+        QMessageBox::information(nullptr, tr("未选择发送对象"), tr("点击在线用户用户名或id即可发送"));
+        return ;
+    }
     QString message = ui->textEditSend->toPlainText();
     const char *mes = message.toStdString().c_str();
     strcpy(mMessage.message, mes);
@@ -225,24 +202,18 @@ void LoginService::ClickedSendButtonSlot()
     }
 }
 
-//get message from recv message thread
-void LoginService::RecvMessage(Message message)
-{
-    QString mes = QString::fromLocal8Bit(message.message);
-    QString messendname = QString::fromLocal8Bit(message.sendername);
-    QString mestime = QString::fromLocal8Bit(message.time);
-    QString show = QString("[%1]:[%2]:\n%3").arg(mestime).arg(messendname).arg(mes);
-
-    //ui->textEditMessage->setText(show);
-    ui->textEditMessage->append(show);
-}
-
+//recv message from
 void LoginService::ClickedRecvButtonSlot()
 {
     //mThread->RecvMessage(1);
     Message message;
     if(mClient->ReadFromServer(&message))
     {
+        if(strlen(message.message) == 0 && strlen(message.receivername) == 0 && strlen(message.sendername) == 0)
+        {
+            QMessageBox::information(nullptr, tr("没有信息"), tr("当前无人发送信息"));
+            return ;
+        }
         QString mes = QString::fromLocal8Bit(message.message);
         QString messendname = QString::fromLocal8Bit(message.sendername);
         QString mestime = QString::fromLocal8Bit(message.time);
@@ -250,3 +221,4 @@ void LoginService::ClickedRecvButtonSlot()
         ui->textEditMessage->append(show);
     }
 }
+#endif

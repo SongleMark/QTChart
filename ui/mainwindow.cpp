@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
 #include "logger/logger.h"
+#include <QMessageBox>
+#include <QKeyEvent>
 
 #define TAG "MainWindow"
 
@@ -20,6 +21,25 @@ MainWindow::~MainWindow()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     mListener->CloseEvent();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_Enter:
+    case Qt::Key_Return:
+        ClickedLoginSlot();
+        break;
+    case Qt::Key_F1:
+        showFullScreen();
+        break;
+    case Qt::Key_F2:
+        showNormal();
+        break;
+    default:
+        break;
+    }
 }
 
 //初始化主界面

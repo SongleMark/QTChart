@@ -3,5 +3,7 @@
         <file>resources/name.jpeg</file>
         <file>resources/password.jpg</file>
         <file>resources/oicq.jpg</file>
+        <file>resources/clear.png</file>
+        <file>resources/send.png</file>
     </qresource>
 </RCC>

@@ -33,7 +33,8 @@ SOURCES += \
     communication/client.cpp \
     communication/server.cpp \
     config/configservice.cpp \
-    controller/controllerservice.cpp
+    controller/controllerservice.cpp \
+    ui/messageservice.cpp
 
 HEADERS += \
     ui/mainwindow.h \
@@ -45,12 +46,14 @@ HEADERS += \
     communication/server.h \
     config/configservice.h \
     controller/controllerservice.h \
-    logger/logger.h
+    logger/logger.h \
+    ui/messageservice.h
 
 FORMS += \
         mainwindow.ui \
     ui/registerservice.ui \
-    ui/loginservice.ui
+    ui/loginservice.ui \
+    ui/messageservice.ui
 
 INCLUDEPATH += /usr/local/include \
                /usr/local/include/opencv4
@@ -75,4 +78,4 @@ LIBS += /usr/local/lib/libopencv_aruco.so \
 /usr/local/lib/libopencv_imgproc.so \
 
 RESOURCES += \
-    resources.qrc
+    image.qrc

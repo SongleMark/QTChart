@@ -6,30 +6,7 @@
 #include <QMutex>
 #include <QWaitCondition>
 #include "communication/client.h"
-
-class LoginService ;
-
-class MessageThread : public QThread
-{
-    Q_OBJECT
-
-public:
-    explicit MessageThread(Client *client, bool IsStop = false, int run = 0);
-    virtual ~MessageThread();
-    void run();
-    void RecvMessage(int run);
-
-private:
-    Client *mClietn;
-    bool mIsStop;
-    Message mMessage;
-    int mIsRun;
-    QMutex mMutex;
-    QWaitCondition mWaitCondition;
-
-signals:
-    void RecvMessage(Message message);
-};
+#include "messageservice.h"
 
 namespace Ui {
 class LoginService;
@@ -42,6 +19,7 @@ class LoginService : public QWidget
 public:
     explicit LoginService(QWidget *parent = 0);
     ~LoginService();
+    void closeEvent(QCloseEvent *event);
     void Init();
     void GetUserName(QString name);
     void InitTime();
@@ -54,10 +32,10 @@ private slots:
     void UpdateTime();
     void ClickedGetOnlineUserSlot();
     void ClickedOnlineListSlot(int row, int column);
+#if 0
     void ClickedSendButtonSlot();
-    void RecvMessage(Message message);
     void ClickedRecvButtonSlot();
-
+#endif
 private:
     Ui::LoginService *ui;
     QString mName;
@@ -66,7 +44,8 @@ private:
     OnlineUser *mHead;
     int mSendId;
     Message mMessage;
-    MessageThread *mThread;
+    bool mIsClickedUserName;
+    MessageService *mMessageService;
 
 };
 

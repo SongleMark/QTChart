@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
+    <width>504</width>
     <height>346</height>
    </rect>
   </property>
@@ -16,43 +16,16 @@
     <height>346</height>
    </size>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>442</width>
-    <height>346</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(46, 52, 54);</string>
+   <string notr="true">background-color: rgb(85, 87, 83);</string>
   </property>
-  <widget class="QLabel" name="labelreset">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>270</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(138, 226, 52);</string>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;忘记密码？重新设置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>110</x>
      <y>20</y>
      <width>321</width>
      <height>41</height>
@@ -70,126 +43,264 @@ font: 15pt &quot;Ubuntu&quot;;
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>32</x>
-     <y>220</y>
-     <width>371</width>
-     <height>33</height>
+     <x>170</x>
+     <y>270</y>
+     <width>140</width>
+     <height>51</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="pushButtonregister">
+     <widget class="QLabel" name="labelreset">
+      <property name="font">
+       <font>
+        <underline>true</underline>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(138, 226, 52);</string>
       </property>
       <property name="text">
-       <string>注册</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;忘记密码？重新设置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButtonlogin">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-      <property name="text">
-       <string>登录</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>138</width>
+        <height>40</height>
+       </size>
       </property>
-     </widget>
+     </spacer>
     </item>
    </layout>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>29</x>
-     <y>84</y>
-     <width>371</width>
-     <height>121</height>
+     <x>20</x>
+     <y>220</y>
+     <width>465</width>
+     <height>35</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="minimumSize">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>67</width>
-        <height>41</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>67</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
-      </property>
-      <property name="text">
-       <string>用户名</string>
-      </property>
-     </widget>
+     </spacer>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEditname">
-      <property name="minimumSize">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButtonregister">
+        <property name="minimumSize">
+         <size>
+          <width>182</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+        <property name="text">
+         <string>注册</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonlogin">
+        <property name="minimumSize">
+         <size>
+          <width>181</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+        <property name="text">
+         <string>登录</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>281</width>
-        <height>31</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="maximumSize">
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>84</y>
+     <width>481</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>281</width>
-        <height>31</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
+     </spacer>
+    </item>
+    <item row="0" column="1" rowspan="2">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="minimumSize">
+         <size>
+          <width>67</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>67</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+        <property name="text">
+         <string>用户名</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditname">
+        <property name="minimumSize">
+         <size>
+          <width>281</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>281</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>67</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>67</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+        <property name="text">
+         <string>密码</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditpassword">
+        <property name="minimumSize">
+         <size>
+          <width>281</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>281</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(138, 226, 52);</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="minimumSize">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>67</width>
-        <height>41</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>67</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
-      </property>
-      <property name="text">
-       <string>密码</string>
-      </property>
-     </widget>
+     </spacer>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEditpassword">
-      <property name="minimumSize">
+    <item row="1" column="2">
+     <spacer name="horizontalSpacer_6">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>281</width>
-        <height>31</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>281</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
-      </property>
-     </widget>
+     </spacer>
     </item>
    </layout>
   </widget>

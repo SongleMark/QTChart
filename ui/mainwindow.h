@@ -28,6 +28,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void closeEvent(QCloseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
     void Init();
     void SetInputFormat();
     void GetUiPointFromManager(RegisterService *regist, LoginService *login, Client *client);

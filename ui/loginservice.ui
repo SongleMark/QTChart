@@ -6,23 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>856</width>
-    <height>834</height>
+    <width>376</width>
+    <height>831</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>376</width>
+    <height>831</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>376</width>
+    <height>831</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(46, 52, 54);</string>
+   <string notr="true">background-color: rgb(85, 87, 83);</string>
   </property>
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>341</width>
-     <height>331</height>
+     <width>351</width>
+     <height>811</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -33,8 +45,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>339</width>
-      <height>329</height>
+      <width>349</width>
+      <height>809</height>
      </rect>
     </property>
     <widget class="QLabel" name="labelimage">
@@ -138,43 +150,12 @@
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>230</y>
-       <width>67</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(138, 226, 52);
-</string>
-     </property>
-     <property name="text">
-      <string>个性签名:</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>220</y>
-       <width>241</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(138, 226, 52);
-</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButtonGetClient">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>280</y>
-       <width>321</width>
+       <x>0</x>
+       <y>410</y>
+       <width>341</width>
        <height>41</height>
       </rect>
      </property>
@@ -202,55 +183,18 @@
       <string/>
      </property>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QScrollArea" name="scrollArea_2">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>10</y>
-     <width>481</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>479</width>
-      <height>329</height>
-     </rect>
-    </property>
-    <widget class="QCalendarWidget" name="calendarWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>456</width>
-       <height>177</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(138, 226, 52);
-</string>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>200</y>
-       <width>481</width>
+       <y>280</y>
+       <width>333</width>
        <height>114</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="label_4">
           <property name="minimumSize">
@@ -276,12 +220,6 @@
         </item>
         <item>
          <widget class="QTextEdit" name="textEditStartTime">
-          <property name="minimumSize">
-           <size>
-            <width>371</width>
-            <height>51</height>
-           </size>
-          </property>
           <property name="maximumSize">
            <size>
             <width>371</width>
@@ -290,7 +228,7 @@
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(138, 226, 52);
-font: 16pt &quot;Ubuntu&quot;;
+font: 11pt &quot;Ubuntu&quot;;
 </string>
           </property>
          </widget>
@@ -298,7 +236,7 @@ font: 16pt &quot;Ubuntu&quot;;
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="label_5">
           <property name="minimumSize">
@@ -324,12 +262,6 @@ font: 16pt &quot;Ubuntu&quot;;
         </item>
         <item>
          <widget class="QTextEdit" name="textEditCurrent">
-          <property name="minimumSize">
-           <size>
-            <width>371</width>
-            <height>51</height>
-           </size>
-          </property>
           <property name="maximumSize">
            <size>
             <width>371</width>
@@ -338,7 +270,7 @@ font: 16pt &quot;Ubuntu&quot;;
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(138, 226, 52);
-font: 16pt &quot;Ubuntu&quot;;
+font: 11pt &quot;Ubuntu&quot;;
 </string>
           </property>
          </widget>
@@ -347,88 +279,74 @@ font: 16pt &quot;Ubuntu&quot;;
       </item>
      </layout>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>350</y>
-     <width>831</width>
-     <height>471</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QTextEdit" name="textEditMessage">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(138, 226, 52);</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTextEdit" name="textEditSend">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(138, 226, 52);</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="labelSendName">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(138, 226, 52);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>460</y>
+       <width>341</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(138, 226, 52);
+font: 15pt &quot;Ubuntu&quot;;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelSendName">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>770</y>
+       <width>341</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(138, 226, 52);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>220</y>
+       <width>328</width>
+       <height>53</height>
+      </rect>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QPushButton" name="pushButtonsendall">
+       <widget class="QLabel" name="label_3">
         <property name="styleSheet">
-         <string notr="true">color: rgb(138, 226, 52);</string>
+         <string notr="true">color: rgb(138, 226, 52);
+</string>
         </property>
         <property name="text">
-         <string>群发信息</string>
+         <string>个性签名:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonRecv">
+       <widget class="QTextEdit" name="textEdit">
+        <property name="maximumSize">
+         <size>
+          <width>371</width>
+          <height>51</height>
+         </size>
+        </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(138, 226, 52);</string>
-        </property>
-        <property name="text">
-         <string>接收信息</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonSend">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(138, 226, 52);</string>
-        </property>
-        <property name="text">
-         <string>发送</string>
+         <string notr="true">color: rgb(138, 226, 52);
+</string>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-   </layout>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

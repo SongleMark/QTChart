@@ -146,7 +146,14 @@ bool Server::WriteToClient()
         LOG(TAG, "write error ...");
         return false;
     }
-    LOG(TAG, "write user node success ...");
+    LOG(TAG, "write user list success ...");
+    OnlineUser *pshow = mUhead;
+    qDebug() << "server:\tname\tId";
+    while(pshow)
+    {
+        qDebug() << "server:\t" << pshow->user << "\t" << pshow->fd;
+        pshow = pshow->next;
+    }
 
     return true;
 }

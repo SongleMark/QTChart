@@ -42,6 +42,7 @@ bool Client::Init()
         LOG(TAG, "socket error ...");
         return false;
     }
+    LOG(TAG, "socket fd = ", mSocketfd);
     mSaddr.sin_family = AF_INET;
     mSaddr.sin_port = htons(mConfig.port.toUShort());
     mSaddr.sin_addr.s_addr = inet_addr(mConfig.ip.toLatin1().constData());
@@ -260,7 +261,7 @@ bool Client::ReadFromServer(Message *messageinfo)
         }
         if(ZERO == pack.type)
         {
-            break;
+            IsStop = true;
         }
         else if(MESSAGE == pack.type)
         {
@@ -285,7 +286,7 @@ OnlineUser *Client::ReadOnlineUser()
     int result = 0;
     bool IsStop = false;
     Package pack;
-    OnlineUser *pnew;
+    OnlineUser *pnew = NULL;
     OnlineUser *head = NULL;
 
     while(!IsStop)
